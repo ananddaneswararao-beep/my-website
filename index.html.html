@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anand Dynamic Portfolio</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#020617);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Navbar */
+
+nav{
+    width:100%;
+    padding:18px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+
+    background:rgba(15,23,42,0.7);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+
+    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#38bdf8;
+}
+
+.toggle-btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:30px;
+
+    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* Hero Section */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero img{
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:5px solid rgba(255,255,255,0.2);
+
+    box-shadow:
+    0 0 25px #38bdf8,
+    0 0 60px rgba(56,189,248,0.5);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.hero h2{
+    margin-top:30px;
+    font-size:60px;
+}
+
+.hero span{
+    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:18px;
+    font-size:22px;
+    color:#cbd5e1;
+}
+
+.btn{
+    margin-top:30px;
+    padding:14px 34px;
+
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* Sections */
+
+section{
+    padding:100px 10%;
+}
+
+.title{
+    font-size:42px;
+    margin-bottom:40px;
+    text-align:center;
+
+    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* About */
+
+#about p{
+    text-align:center;
+    font-size:20px;
+    line-height:1.8;
+    max-width:800px;
+    margin:auto;
+    color:#cbd5e1;
+}
+
+/* Skills */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+}
+
+.skill-box{
+    padding:30px;
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.08);
+
+    text-align:center;
+
+    transition:0.4s;
+}
+
+.skill-box:hover{
+    transform:translateY(-10px);
+
+    background:linear-gradient(
+    135deg,
+    rgba(56,189,248,0.3),
+    rgba(139,92,246,0.3)
+    );
+}
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.project-card{
+    padding:30px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+
+    transition:0.4s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+}
+
+.project-card h3{
+    margin-bottom:15px;
+    color:#38bdf8;
+}
+
+/* Contact */
+
+.contact-form{
+    max-width:650px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    padding:16px;
+
+    border:none;
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    background:#020617;
+    color:#94a3b8;
+}
+
+/* Animation */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .hero h2{
+        font-size:42px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        gap:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav>
+
+<div class="logo">Anand</div>
+
+<ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+
+<button class="toggle-btn" onclick="toggleMode()">
+Mode
+</button>
+
+</nav>
+
+<!-- Hero -->
+
+<div class="hero">
+
+<img src="anand.jpeg" alt="Profile">
+
+<h2>Hello, I'm <span>Anand</span></h2>
+
+<p id="typing"></p>
+
+<a href="#contact">
+<button class="btn">Hire Me</button>
+</a>
+
+</div>
+
+<!-- About -->
+
+<section id="about">
+
+<h2 class="title">About Me</h2>
+
+<p>
+I am Anand, a B.Tech third year student and web developer.
+I love creating modern and responsive websites.
+</p>
+
+</section>
+
+<!-- Skills -->
+
+<section id="skills">
+
+<h2 class="title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill-box">HTML</div>
+<div class="skill-box">CSS</div>
+<div class="skill-box">JavaScript</div>
+<div class="skill-box">Python</div>
+<div class="skill-box">C Programming</div>
+
+</div>
+
+</section>
+
+<!-- Projects -->
+
+<section id="projects">
+
+<h2 class="title">Projects</h2>
+
+<div class="projects" id="projectContainer"></div>
+
+</section>
+
+<!-- Contact -->
+
+<section id="contact">
+
+<h2 class="title">Contact Me</h2>
+
+<div class="contact-form">
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Your Email">
+
+<textarea rows="5" placeholder="Message"></textarea>
+
+<button class="btn">Send Message</button>
+
+</div>
+
+<br>
+
+<p>
+📧
+<a href="mailto:ananddaneswararaotirumani@gmail.com"
+style="color:#38bdf8;">
+ananddaneswararaotirumani@gmail.com
+</a>
+</p>
+
+<br>
+
+<p>
+📱
+<a href="tel:+917989025119"
+style="color:#38bdf8;">
++91 7989025119
+</a>
+</p>
+
+<br>
+
+<p>
+💼
+<a href="https://www.linkedin.com/in/anand-daneswararao-3892083a9?"
+style="color:#38bdf8;">
+LinkedIn
+</a>
+</p>
+
+</section>
+
+<footer>
+© 2026 Anand Portfolio
+</footer>
+
+<script>
+
+/* Typing Effect */
+
+const text = "B.Tech Student | Web Developer | Programmer";
+
+let i = 0;
+
+function typing(){
+
+    if(i < text.length){
+
+        document.getElementById("typing").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,100);
+    }
+
+}
+
+typing();
+
+/* Dark Light Mode */
+
+function toggleMode(){
+
+    document.body.classList.toggle("light-mode");
+
+}
+
+/* Dynamic Projects */
+
+const projects = [
+
+{
+    title:"Portfolio Website",
+    desc:"Responsive personal portfolio website."
+},
+
+{
+    title:"Student CRM",
+    desc:"Student management system project."
+},
+
+{
+    title:"Weather App",
+    desc:"Live weather checking application."
+}
+
+];
+
+const container = document.getElementById("projectContainer");
+
+projects.forEach(project => {
+
+container.innerHTML += `
+
+<div class="project-card">
+
+<h3>${project.title}</h3>
+
+<p>${project.desc}</p>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+</html>
